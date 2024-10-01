@@ -2,8 +2,6 @@
 
 //Đối tượng 'validator'
 function Validator(options){
-
-
     //Sử dụng đồng thời nhiều rules mà không bị ghi đè
     var selectorRules = {}; //mong muốn hàm forEach chạy xong sẽ lưu tất cả rule vào đây
 
