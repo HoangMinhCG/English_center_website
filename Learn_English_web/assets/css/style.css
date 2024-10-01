@@ -261,6 +261,10 @@
         margin-top: 32px;
     }
 
+    .form {
+        margin-top: 16px;
+    }
+
     .form-control{
         border-radius: 100px;
         padding: 8px;
@@ -360,6 +364,7 @@
         position: relative;
         max-width: calc(100% - 32px);
         animation: modalFadeIn ease 0.5s;
+        margin-top: 100px;
     }
     
     .modal-header {
@@ -477,3 +482,12 @@
         color: #009688;
         background-color: #ccc;
     }
+
+    .form-group.invalid .form-control {
+        border-color: #f33a58;
+      }
+      
+      .form-group.invalid .form-message {
+        color: #f33a58;
+      }
+

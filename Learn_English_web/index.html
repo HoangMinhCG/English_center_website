@@ -130,17 +130,20 @@
                     <h2>ĐĂNG KÝ KIỂM TRA TRÌNH ĐỘ MIỄN PHÍ</h2>
                     <h2>CÙNG CHUYÊN GIA ANH NGỮ TẠI TALKFIRST</h2>
                     <form action="">
-                        <div class="SignUp-FillIn">
-                            <div class="form">
-                                <input type="text" name="" placeholder="Họ và tên" required id="" class="form-control">
+                        <div class="SignUp-FillIn validation3">
+                            <div class="form form-group">
+                                <span class="form-message"></span>
+                                <input type="text" name="" placeholder="Họ và tên" required id="" class="form-control fullname" style="padding: 10px 30px;">
                             </div>
 
-                            <div class="form">
-                                <input type="text" name="" placeholder="SĐT" required id="" class="form-control">
+                            <div class="form form-group">
+                                <span class="form-message"></span>
+                                <input type="text" name="" placeholder="SĐT" required id="" class="form-control number" style="padding: 10px 30px;">
                             </div>
 
-                            <div class="form">
-                                <input type="email" name="" placeholder="Email" required id="" class="form-control">
+                            <div class="form form-group">
+                                <span class="form-message"></span>
+                                <input type="email" name="" placeholder="Email" required id="" class="form-control email" style="padding: 10px 30px;">
                             </div>
                         
                         </div>
@@ -197,7 +200,7 @@
 
 
 
-    <div class="modal js-modal ">
+    <div class="modal js-modal validation ">
      
         <div class="modal-container">
             <div class="modal-close js-modal-close">
@@ -209,13 +212,16 @@
                 <img src="./assets/img/header/logo.jpg" alt="">
             </header>
             <form action="">
-            <div class="modal-body">                
-                <input id="ticket-quantity" type="text" class="modal-input" placeholder="Use name"  required id="" >
+            <div class="modal-body">  
 
-                  
-                <input id="ticket-email" type="Password" class="modal-input" placeholder="Password"  required id="" >
-
-
+                <div class="form-group">            
+                    <span class="form-message"></span>
+                    <input id="ticket-quantity" type="text" class="modal-input email form-control" placeholder="Use name"  required id="" >
+                </div>  
+                <div class="form-group">
+                    <span class="form-message"></span>
+                    <input id="ticket-email" type="Password" class="modal-input password form-control" placeholder="Password"  required id="" >
+                </div>
                 <!--nút pay-->
                 <input id="buy-tickets" type="submit" value="Submit">
                 
@@ -232,7 +238,7 @@
 
 
 
-    <div class="modal js-modal2 ">
+    <div class="modal js-modal2 validation2">
      
         <div class="modal-container">
             <div class="modal-close js-modal-close2">
@@ -243,11 +249,21 @@
                 <p>Điền thông tin đặt hẹn</p>
             </header>
             <form action="">
-            <div class="modal-body">                
-                <input id="ticket-quantity" type="text" class="modal-input" placeholder="Tên của bạn"  required id="" >
+            <div class="modal-body">             
+                <div class="form-group">
+                    <span class="form-message"></span>
+                   <input id="ticket-quantity" type="text" class="modal-input fullname form-control" placeholder="Tên của bạn"  required id="" >
+                </div>
 
-                <input id="ticket-quantity" type="text" class="modal-input" placeholder="Số điện thoại"  required id="" >
-                <input id="ticket-email" type="Email" class="modal-input" placeholder="Email"  required id="" >
+                <div class="form-group">
+                    <span class="form-message"></span>
+                  <input id="ticket-quantity" type="text" class="modal-input number form-control" placeholder="Số điện thoại"  required id="" >
+                </div>
+
+                <div class="form-group">
+                    <span class="form-message"></span>
+                    <input id="ticket-email" type="Email" class="modal-input email form-control" placeholder="Email"  required id="" >
+                </div>
 
 
                 <!--nút pay-->
@@ -358,6 +374,66 @@
             }
     
         </script>
+
+        <script src="./validator.js"></script>
+        <script>
+            Validator({
+              form: '.validation',
+              errorSelector: '.form-message',
+              rules: [
+                //đây tương đương thao tác gọi hàm thôi, ban đầu chưa return gì cả nên sẽ là undefined
+                Validator.isRequired('.password'), //cái mong muốn bắt buộc người dùng nhập vào
+                Validator.minLength('.password',6),
+                Validator.isRequired('.email'),
+                Validator.isEmail('.email'),
+
+                Validator.isRequired('.fullname'),
+                Validator.isRequired('.number')
+                
+
+              ],
+              onsubmit: function (data) {//lấy dlieu và hiện bên tab console khi ta submit
+                console.log(data);
+                //Sau khi lấy dữ liệu thành công sau khi nhấn nút submit, thì từ dữ liệu đó ta sẽ Call Api
+              }
+            })
+          </script>
+
+          <script>
+            Validator({
+              form: '.validation2',
+              errorSelector: '.form-message',
+              rules: [
+                Validator.isRequired('.fullname'),
+                Validator.isRequired('.number'),
+                Validator.isRequired('.email'),
+                Validator.isEmail('.email'),           
+
+              ],
+              onsubmit: function (data) {//lấy dlieu và hiện bên tab console khi ta submit
+                console.log(data);
+                //Sau khi lấy dữ liệu thành công sau khi nhấn nút submit, thì từ dữ liệu đó ta sẽ Call Api
+              }
+            })
+          </script>
+
+          <script>
+            Validator({
+              form: '.validation3',
+              errorSelector: '.form-message',
+              rules: [
+                Validator.isRequired('.fullname'),
+                Validator.isRequired('.number'),
+                Validator.isRequired('.email'),
+                Validator.isEmail('.email'),           
+
+              ],
+              onsubmit: function (data) {//lấy dlieu và hiện bên tab console khi ta submit
+                console.log(data);
+                //Sau khi lấy dữ liệu thành công sau khi nhấn nút submit, thì từ dữ liệu đó ta sẽ Call Api
+              }
+            })
+          </script>
     
 </body>
 </html>
